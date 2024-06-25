@@ -78,7 +78,7 @@ export class ResponseProxyHandler<T extends Response> implements ProxyHandler<T>
           if (!readerReceivedValue) {
             readerReceivedValue = new Uint8Array(result.value);
           } else {
-            const newValue = new Uint8Array(readerReceivedValue.length + result.value.length);
+            const newValue = new Uint8Array(readerReceivedValue.length + result.value?.length ?? 0);
             newValue.set(readerReceivedValue);
             newValue.set(result.value, readerReceivedValue.length);
             readerReceivedValue = newValue;
